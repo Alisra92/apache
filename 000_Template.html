@@ -5,9 +5,59 @@
 </HEAD>
 <BODY>
     <div id="root">
-  Y a rien pour le moment
+  Y a rien pour le moment <BR>
+        <input type="text" id="msg" v-model="unmessage">
+        <BR>
+        Voilà ce que vous avez saisi: {{ unmessage }}
+        <BR>
+        <UL>
+            <LI v-for="nomProf in profs">
+                Le nom est: {{ nomProf }}
+            </LI>
+        </UL>
+
+        <input type="text" id="idNomProfesseur" v-model="unProf">
+
+        <button id="boutonProf" @click="ajouterNom">
+            Ajouter prof
+        </button>
+
+
+
     </div>
-  
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+    var app = new Vue({
+        el: '#root',
+        data : {
+            unmessage: 'Bienvenue, on va bien s\'amuser',
+            profs: ['Roubeau' , 'Vigny' , 'Robert' , 'D\'Amico' , 'Chartrain'],
+            unProf: '',
+        },
+        mounted() {
+            /*  document.querySelector('#boutonProf').addEventListener('click',() => {
+                let idNomProfesseur = document.querySelector('#idNomProfesseur');
+                app.profs.push(idNomProfesseur.value);
+                idNomProfesseur.value = ' ';
+            }) */
+        },
+            methods: {
+                ajouterNom()
+                {
+                    this.profs.push(this.unProf)
+
+                }
+
+
+            }
+
+
+    })
+
+</script>
+
 
 </BODY>
 </HTML>
